@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w($)e_$vic=%q0+h)&_!yd6mr=8px=n4u0@ndy#2q=edr(!v%f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','shohaneccom.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','eccomerceshohan.herokuapp.com']
 
 
 # Application definition
@@ -125,7 +125,7 @@ import django_heroku
 import dj_database_url
 from decouple import config
 STATIC_URL = '/static/'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
