@@ -25,6 +25,4 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('blog/',include('blog.urls')),
     path('shop/',include('shop.urls')),
-     url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
