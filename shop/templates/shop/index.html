@@ -1,4 +1,5 @@
 {% extends 'shop/basic.html' %}
+{% block title%} MyAwesomeCart - Best Ecommerce Website{% endblock %}
 {% block css %}
   .col-md-3
   {
@@ -37,8 +38,9 @@
   <div class="container">
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}
-      <h1>{{product.0.category}}</h1>
-      <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+      <h5>{{product.0.category}}</h5>
+      <div class="row">
+      <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
         <ul class="carousel-indicators">
           <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
           {% for i in range %}
@@ -76,8 +78,11 @@
     <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
       <span class="carousel-control-next-icon"></span>
     </a>
+  </div>
   {% endfor %}
 </div>
+{% endblock %}
+{% block js %}
 <script>
 if(localStorage.getItem('cart')==null){
 var cart={};
@@ -103,9 +108,7 @@ cart[idstr]=[qty,name,parseInt(price)];
 updateCart(cart);
 });
 
-$(document).ready(function() {
 $('#dude').popover();
-});
 updatePopover(cart);
 function updatePopover(cart)
 {
@@ -122,6 +125,7 @@ function updatePopover(cart)
     popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>     "
     console.log(popStr);
     document.getElementById('dude').setAttribute('data-content', popStr);
+     $('#dude').popover('show');
 }
 
 function clearCart() {
